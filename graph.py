@@ -41,4 +41,11 @@ class Graph:
         print("Grafo:\n")
         for node, edges in self.graph.items():
             print(f"{node}: {edges}")
-        
+    
+    def print_shortest_path(self, previous_path, start, end):
+        path = [] # guardar el camino
+        current = end # comenzar desde el nodo final, de meta a inicio
+        while current is not None:
+            path.insert(0, current)
+            current = previous_path[current]
+        print(f"Ruta mas corta de {start} a {end}: {' -> '.join(path)}")
