@@ -26,3 +26,11 @@ if __name__ == "__main__":
     print(f"Metodo Dijkstra desde {start}\n")
 
     distances, previous = graph_valle_real.dijkstra(start)
+
+    print(f"Distancias mas cortas desde {start}:")
+    for node, distance in distances.items():
+        print(f"{start} -> {node}: {distance} m")
+    
+    graph_valle_real.print_shortest_path(previous, "A", "Z")
+    graph_valle_real.print_shortest_path(previous, "A", "H")
+    graph_valle_real.print_shortest_path(previous, "A", "L")
