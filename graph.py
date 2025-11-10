@@ -36,3 +36,9 @@ class Graph:
                     previous_path[neighbor] = min_non_visited_node
             visited.append(min_non_visited_node) # marcar el nodo como visitado
         return distances, previous_path
+
+    def print_graph(self):
+        print("Grafo:\n")
+        for node, edges in self.graph.items():
+            print(f"{node}: {edges}")
+        
