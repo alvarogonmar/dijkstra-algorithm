@@ -48,4 +48,4 @@ class Graph:
         while current is not None:
             path.insert(0, current)
             current = previous_path[current]
-        print(f"Ruta mas corta de {start} a {end}: {' -> '.join(path)}")
+        print(f"Ruta mas corta de {start} a {end}: {" -> ".join(path)}")
