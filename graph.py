@@ -20,4 +20,9 @@ class Graph:
         previous_path =  {node: None for node in self.graph} # Guardar el camino anterior
 
         while len(visited) < len(self.graph): # Mientras no hemos visitado todos los nodos
+            min_non_visited_node = None
+            for node in self.graph:
+                if node not in visited:
+                    if min_non_visited_node is None or distances[node] < distances[min_non_visited_node]:
+                        min_non_visited_node = node
             
