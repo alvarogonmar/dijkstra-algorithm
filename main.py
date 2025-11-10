@@ -16,3 +16,7 @@ if __name__ == "__main__":
     graph_valle_real.add_edge('M', 'Z', 158.6)
     graph_valle_real.add_edge('F', 'J', 362.8)
     graph_valle_real.add_edge('J', 'Z', 548.8)
+
+
+    # mostrar el grafo
+    graph_valle_real.print_graph()
