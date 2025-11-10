@@ -13,7 +13,7 @@ class Graph:
 
     def dijkstra(self, start):
         distances = {node: float('inf') for node in self.graph} # Diccionario con las distancias mas cortas
-        distances[start] = 0
+        distances[start] = 0 # El nodo inicizl le ponemos distancia de 0 porque no hay distancia hacia el mismo
 
         visited = [] # Array para guardar los nodos que ya visitamos
 
@@ -23,6 +23,16 @@ class Graph:
             min_non_visited_node = None
             for node in self.graph:
                 if node not in visited:
-                    if min_non_visited_node is None or distances[node] < distances[min_non_visited_node]:
+                    if min_non_visited_node is None or distances[node] < distances[min_non_visited_node]: # buscar el nodo no visitado con la distancia mas corta
                         min_non_visited_node = node
             
+            if min_non_visited_node is None: # si ya no hay nodos por visitar terminar el for
+                break
+        
+            for neighbor, weight in self.graph[min_non_visited_node]: # recorrer vecinos del nodo actual
+                new_distance = distances[min_non_visited_node] + weight # nueva distancia al vecino tomando en cuenta el nodo actual
+                if new_distance < distances[neighbor]: # si la nueva distancia es menor que la que ya teniamos
+                    distances[neighbor] = new_distance # guardar la nueva distancia
+                    previous_path[neighbor] = min_non_visited_node
+            visited.append(min_non_visited_node) # marcar el nodo como visitado
+        return distances, previous_path
