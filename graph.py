@@ -30,7 +30,7 @@ class Graph:
                 break
         
             for neighbor, weight in self.graph[min_non_visited_node]: # recorrer vecinos del nodo actual
-                new_distance = distances[min_non_visited_node] + weight # nueva distancia al vecino tomando en cuenta el nodo actual
+                new_distance = round(distances[min_non_visited_node] + weight, 2) # nueva distancia al vecino tomando en cuenta el nodo actual
                 if new_distance < distances[neighbor]: # si la nueva distancia es menor que la que ya teniamos
                     distances[neighbor] = new_distance # guardar la nueva distancia
                     previous_path[neighbor] = min_non_visited_node
