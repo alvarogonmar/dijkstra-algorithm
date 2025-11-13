@@ -3,17 +3,17 @@ class Graph:
         self.graph = {}
 
     def add_edge(self, u, v, weight):
-        if u not in self.graph:
+        if u not in self.graph: # si el nodo no existe en el grafo, lo creamos con una lista vacia
             self.graph[u] = []
         if v not in self.graph:
             self.graph[v] = []
         
-        self.graph[u].append((v, weight))
-        self.graph[v].append((u, weight))
+        self.graph[u].append((v, weight)) # agregamos conecion de u a v con su distancia
+        self.graph[v].append((u, weight)) # agregamos conexion de v a u con el mismo peso
 
     def dijkstra(self, start):
         distances = {node: float('inf') for node in self.graph} # Diccionario con las distancias mas cortas
-        distances[start] = 0 # El nodo inicizl le ponemos distancia de 0 porque no hay distancia hacia el mismo
+        distances[start] = 0 # El nodo inicial le ponemos distancia de 0 porque no hay distancia hacia el mismo
 
         visited = [] # Array para guardar los nodos que ya visitamos
 
@@ -39,13 +39,13 @@ class Graph:
 
     def print_graph(self):
         print("Grafo:\n")
-        for node, edges in self.graph.items():
+        for node, edges in self.graph.items():     # recorremos todos los nodos y sus conexiones
             print(f"{node}: {edges}")
     
     def print_shortest_path(self, previous_path, start, end):
         path = [] # guardar el camino
         current = end # comenzar desde el nodo final, de meta a inicio
         while current is not None:
-            path.insert(0, current)
-            current = previous_path[current]
+            path.insert(0, current) # insertamos cada nodo al inicio de la lista
+            current = previous_path[current] # y mos movemos al nodo anterior
         print(f"Ruta mas corta de {start} a {end}: {' -> '.join(path)}")
